@@ -17,7 +17,7 @@ export default function Carrito() {
             withCredentials: true,
         });
         axiosInstance.get(
-            "http://localhost:8000/api/carrito"
+            "https://proyecto1-api.onrender.com/api/carrito"
         ).then((res) =>{
             console.log(res.data)
             setProductos(res.data);

@@ -17,7 +17,7 @@ export default function Producto(props) {
         try {
             const identificadorProducto = e.value;
             const dataProduct = await axios.get(
-                `http://localhost:8000/api/Producto/${identificadorProducto}`
+                `https://proyecto1-api.onrender.com/api/Producto/${identificadorProducto}`
             );
             // console.log(dataProduct.data)
             agregarAlCarrito(dataProduct.data);
@@ -37,7 +37,7 @@ export default function Producto(props) {
             };
             console.log("pal carrito", data);
             const res = await axiosInstance.post(
-                "http://localhost:8000/api/carrito/add",
+                "https://proyecto1-api.onrender.com/api/carrito/add",
                 data
             );
             actualizarNumProducts();
@@ -49,7 +49,7 @@ export default function Producto(props) {
 
     const actualizarNumProducts = () => {
         axiosInstance
-            .get("http://localhost:8000/api/carrito")
+            .get("https://proyecto1-api.onrender.com/api/carrito")
             .then((res) => {
                 console.log("res num: ", res.data.length);
                 setNumProductsContext(res.data.length);

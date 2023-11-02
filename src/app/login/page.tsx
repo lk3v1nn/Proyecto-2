@@ -21,7 +21,7 @@ export default function Login() {
       e.preventDefault();
       console.log(datos)
       try {
-        const respuestaAxios = await axiosInstance.post('http://localhost:8000/api/login', datos);
+        const respuestaAxios = await axiosInstance.post('https://proyecto1-api.onrender.com/api/login', datos);
         router.push('../catalogo')
         // const respuestaAxios = await axiosInstance.get('http://localhost:8000/api/productos');
         console.log(respuestaAxios)

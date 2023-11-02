@@ -18,7 +18,7 @@ export default function Catalogo() {
 
     const obtenerDataProductos = () => {
         const respuestaAxios = axios
-            .get("http://localhost:8000/api/productos")
+            .get("https://proyecto1-api.onrender.com/api/productos")
             .then((res) => {
                 setProducto(res.data);
             })
