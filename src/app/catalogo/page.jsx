@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, createContext, Dispatch, SetStateAction } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import axios from "axios";
 import "./styles/Catalogo.css";
 import Producto from "./components/Producto";
