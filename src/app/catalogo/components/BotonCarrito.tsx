@@ -2,14 +2,14 @@
 import "../styles/Carrito.css";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
-import { numProductsContext } from "../layout";
+import { NumProductsContext } from "../layout";
 
 export default function BotonCarrito() {
     const router = useRouter();
     const redireccionar = () => {
         router.push("../carrito");
     };
-    const [numProducts, setNumProductsContext] = useContext(numProductsContext);
+    const [numProducts, setNumProductsContext] = useContext(NumProductsContext);
 
     return (
         <div className="cartContainer">

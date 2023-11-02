@@ -1,7 +1,7 @@
 import "../styles/Producto.css";
 import React, { useContext, useEffect } from "react";
 import axios from "axios";
-import { numProductsContext } from "../layout";
+import { NumProductsContext } from "../layout";
 
 const axiosInstance = axios.create({
     withCredentials: true,
@@ -16,7 +16,7 @@ export default function Producto(props: {
     precioDescuento: String;
     imagen: String;
 }) {
-    const [numProducts, setNumProductsContext] = useContext(numProductsContext);
+    const [numProducts, setNumProductsContext] = useContext(NumProductsContext);
 
     useEffect(() => {
         actualizarNumProducts();
