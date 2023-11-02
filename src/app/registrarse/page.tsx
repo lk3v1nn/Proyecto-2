@@ -2,12 +2,57 @@
 
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import {Alert} from './components/Alert'
 
 export default function Registrarse() {
-    const [datos, setDatos] = useState({ nombre: "", });
+    const [datos, setDatos] = useState({ nombre: "" });
+    const [error, setError] = useState();
+    const router = useRouter();
+
+    const manejadorSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+
+        const Nombres = formData.get("nombre");
+        const Apellidos = formData.get("apellido");
+        const FechaNacimiento = formData.get("fechaNacimiento");
+        const Clave = formData.get("clave");
+        const ValidacionClave = formData.get("clave2");
+        const DireccionEntrega = formData.get("direccionEntrega");
+        const NIT = formData.get("nit");
+        const NumeroTelefonico = formData.get("numeroTelefonico");
+        const CorreoElectronico = formData.get("email");
+
+        const dataUser = {
+            Nombres,
+            Apellidos,
+            FechaNacimiento,
+            Clave,
+            ValidacionClave,
+            DireccionEntrega,
+            NIT,
+            NumeroTelefonico,
+            CorreoElectronico
+        };
+        try {
+            const respuesta = await axios.post(
+                "https://proyecto1-api.onrender.com/api/registro",
+                dataUser
+            );
+            router.push("../login");
+        } catch (error) {
+            console.log(error);
+            if (error instanceof AxiosError) {
+                setError(error.response?.data.Error);
+            }
+        }
+    };
 
     return (
         <>
+            {error && <Alert mensaje = {error}/>}
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     {/* <img
@@ -30,7 +75,7 @@ export default function Registrarse() {
                 </p>
 
                 <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-2">
+                    <form className="space-y-2" onSubmit={manejadorSubmit}>
                         <div>
                             <label
                                 htmlFor="nombre"
@@ -46,7 +91,12 @@ export default function Registrarse() {
                                     required
                                     className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     autoComplete="Nombre"
-                                    onChange={(e)=> setDatos({...datos, nombre: e.target.value})}
+                                    onChange={(e) =>
+                                        setDatos({
+                                            ...datos,
+                                            nombre: e.target.value,
+                                        })
+                                    }
                                 />
                             </div>
                         </div>
