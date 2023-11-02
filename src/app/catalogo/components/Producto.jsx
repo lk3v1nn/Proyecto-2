@@ -1,5 +1,5 @@
 import "../styles/Producto.css";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from 'react';
 import axios from "axios";
 
 const axiosInstance = axios.create({

@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext, Dispatch, SetStateAction } from "react";
+// import React from "react";
 import axios from "axios";
 import "./styles/Catalogo.css";
 import Producto from "./components/Producto";
 import BotonCarrito from "./components/BotonCarrito";
 
-export const NumProductsContext = createContext();
+type StateType = [string, Dispatch<SetStateAction<string>>];
+
+export const NumProductsContext = createContext<StateType>(["", () => {}]);
 
 export default function Catalogo() {
     const [productos, setProducto] = useState([]);
