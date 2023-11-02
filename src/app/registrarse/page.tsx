@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
-export default function registrarse() {
+export default function Registrarse() {
     const [datos, setDatos] = useState({ nombre: "", });
 
     return (
