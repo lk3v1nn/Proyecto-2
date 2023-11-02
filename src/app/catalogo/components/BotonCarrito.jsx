@@ -2,7 +2,7 @@
 import "../styles/Carrito.css";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
-import { NumProductsContext } from "../layout";
+import {NumProductsContext} from '../page'
 
 export default function BotonCarrito() {
     const router = useRouter();

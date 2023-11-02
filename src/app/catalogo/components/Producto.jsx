@@ -1,21 +1,12 @@
 import "../styles/Producto.css";
 import React, { useContext, useEffect } from "react";
 import axios from "axios";
-import { NumProductsContext } from "../layout";
 
 const axiosInstance = axios.create({
     withCredentials: true,
 });
 
-export default function Producto(props: {
-    categorias: Array<string>;
-    nombre: String;
-    identificador: string;
-    descripcion: string;
-    descuento: String;
-    precioDescuento: String;
-    imagen: String;
-}) {
+export default function Producto(props) {
     const [numProducts, setNumProductsContext] = useContext(NumProductsContext);
 
     useEffect(() => {
@@ -35,7 +26,7 @@ export default function Producto(props: {
         }
     };
 
-    const agregarAlCarrito = async (dataProduct: object) => {
+    const agregarAlCarrito = async (dataProduct) => {
         try {
             const data = {
                 Nombre: dataProduct.Nombre,

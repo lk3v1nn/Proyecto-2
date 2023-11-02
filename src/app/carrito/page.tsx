@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Carrito() {
-    const [productos, setProductos] = useState();
+    const [productos, setProductos] = useState([{_id:'', Nombre:'', Descripcion:'', cantidad:'', precio:''}]);
 
     useEffect(() => {
         buscarProductosCliente();
