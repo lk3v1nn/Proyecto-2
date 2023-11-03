@@ -18,24 +18,26 @@ export default function Login() {
 
         const axiosInstance = axios.create({
             withCredentials: true,
+            headers: {
+                "Content-Type": "application/json",
+            },
         });
 
         //   console.log(datos)
-        axios
-            .post("https://proyecto1-api.onrender.com/api/login/", datos, {
-                withCredentials: true,
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            })
-            .then((response) => {
-                // router.push('../catalogo')
-                console.log(response);
-            })
-            .catch((error) => {
-                // Manejar errores
-                console.log(error)
-            });
+        try {
+            const respuestaAxios = await axiosInstance.post(
+                "https://proyecto1-api.onrender.com/api/login/11",
+                datos
+            );
+            // router.push('../catalogo')
+            console.log(respuestaAxios);
+            console.log("si pusho el boton");
+        } catch (error) {
+            if (error instanceof AxiosError) {
+                console.log(error.response?.data);
+                console.log("error en el login p2");
+            }
+        }
     };
 
     return (
