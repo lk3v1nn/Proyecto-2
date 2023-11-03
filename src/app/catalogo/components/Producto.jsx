@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 });
 
 export default function Producto(props) {
-    const [numProducts, setNumProductsContext] = useContext(NumProductsContext);
+    const [numProducts, setNumProducts] = useContext(NumProductsContext);
 
     useEffect(() => {
         actualizarNumProducts();
@@ -53,7 +53,7 @@ export default function Producto(props) {
             .get("https://proyecto1-api.onrender.com/api/carrito")
             .then((res) => {
                 console.log("res num: ", res.data.length);
-                setNumProductsContext(res.data.length);
+                setNumProducts(res.data.length);
             })
             .catch((err) => {
                 console.log("error al acualizar el numero");

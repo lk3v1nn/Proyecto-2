@@ -7,6 +7,10 @@ import "./styles/Catalogo.css";
 import Producto from "./components/Producto";
 import BotonCarrito from "./components/BotonCarrito";
 
+const axiosInstance = axios.create({
+    withCredentials: true,
+});
+
 type StateType = [string, Dispatch<SetStateAction<string>>];
 
 export const NumProductsContext = createContext<StateType>(["", () => {}]);
@@ -17,6 +21,7 @@ export default function Catalogo() {
 
     useEffect(() => {
         obtenerDataProductos();
+        actualizarNumProducts();
     }, []);
 
     const obtenerDataProductos = () => {
@@ -27,6 +32,19 @@ export default function Catalogo() {
             })
             .catch(() => {
                 console.log("Error al obtener los datos");
+            });
+    };
+
+    const actualizarNumProducts = () => {
+        axiosInstance
+            .get("https://proyecto1-api.onrender.com/api/carrito")
+            .then((res) => {
+                console.log("res num: ", res.data.length);
+                setNumProducts(res.data.length);
+            })
+            .catch((err) => {
+                console.log("error al acualizar el numero");
+                console.log(err);
             });
     };
 
