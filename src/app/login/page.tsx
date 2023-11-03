@@ -11,9 +11,7 @@ export default function Login() {
     const [datos, setDatos] = useState({ CorreoElectronico: "", Clave: "" });
     const router = useRouter();
 
-    const axiosInstance = axios.create({
-        withCredentials: true,
-      });
+
 
     useEffect(() => {
         console.log("carga la pagina");
@@ -21,7 +19,12 @@ export default function Login() {
 
     const manejadorSumit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      console.log(datos)
+      
+      const axiosInstance = axios.create({
+        withCredentials: true,
+      });
+
+    //   console.log(datos)
       try {
         const respuestaAxios = await axiosInstance.post('https://proyecto1-api.onrender.com/api/login', datos);
         // router.push('../catalogo')
