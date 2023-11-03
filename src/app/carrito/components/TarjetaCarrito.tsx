@@ -15,6 +15,7 @@ export default function TarjetaCarrito(prop: {
     const [idProducto, setIdProducto] = useState("");
 
     const eliminarProducto = async () => {
+        console.log(`https://proyecto1-api.onrender.com/api/carrito/${idProducto}`)
         try {
             const responseAxios = await axiosInstance.delete(`https://proyecto1-api.onrender.com/api/carrito/${idProducto}`);
             window.location.reload();
