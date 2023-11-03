@@ -37,7 +37,7 @@ export default function Login() {
             .catch((error) => {
                 if (error instanceof AxiosError) {
                     console.log(error.response?.data);
-                    setError(error.response?.data)
+                    setError(error.response?.data.Error)
                 }
             });
     };
