@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 
 type StateType = [string, Dispatch<SetStateAction<string>>];
 
-export const NumProductsContext = createContext();
+export const NumProductsContext = createContext<StateType>(["", () => {}]);
 
 export default function Catalogo() {
     const [productos, setProducto] = useState([]);
