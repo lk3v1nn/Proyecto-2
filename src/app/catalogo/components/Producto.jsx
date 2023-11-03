@@ -2,13 +2,14 @@ import "../styles/Producto.css";
 import React, { useContext, useEffect } from 'react';
 import axios from "axios";
 import {NumProductsContext} from '../page'
+import { stringify } from "querystring";
 
 const axiosInstance = axios.create({
     withCredentials: true,
 });
 
 export default function Producto(props) {
-    const [numProducts, setNumProductsContext] = useContext(NumProductsContext);
+    const [numProducts, setNumProducts] = useContext(NumProductsContext);
 
     useEffect(() => {
         actualizarNumProducts();
@@ -53,7 +54,7 @@ export default function Producto(props) {
             .get("https://proyecto1-api.onrender.com/api/carrito")
             .then((res) => {
                 console.log("res num: ", numProducts);
-                setNumProductsContext(res.data.length);
+                setNumProducts(stringify(res.data.length));
             })
             .catch((err) => {
                 console.log("error al acualizar el numero");
