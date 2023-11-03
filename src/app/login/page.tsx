@@ -22,7 +22,7 @@ export default function Login() {
 
         //   console.log(datos)
         axios
-            .post("https://proyecto1-api.onrender.com/api/login/", {
+            .post("https://proyecto1-api.onrender.com/api/login/", datos, {
                 withCredentials: true,
                 headers: {
                     "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export default function Login() {
             })
             .catch((error) => {
                 // Manejar errores
-                console.log('error :C')
+                console.log(error)
             });
     };
 
