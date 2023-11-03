@@ -12,7 +12,7 @@ export default function Producto(props) {
 
     useEffect(() => {
         actualizarNumProducts();
-    }, []);
+    }, [numProducts]);
 
     const extraeDatosProducto = async (e) => {
         try {
