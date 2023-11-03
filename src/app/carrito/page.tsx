@@ -34,6 +34,7 @@ export default function Carrito() {
                     productos.map((v) => (
                         <TarjetaCarrito
                             key={v._id}
+                            id={v._id}
                             nombre={v.Nombre}
                             descripcion={v.Descripcion}
                             cantidad={v.cantidad}

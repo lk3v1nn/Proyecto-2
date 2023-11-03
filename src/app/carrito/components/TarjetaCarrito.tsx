@@ -1,16 +1,25 @@
 import axios from "axios";
+import React, { useState } from "react";
 
 export default function TarjetaCarrito(prop: {
     nombre: string;
     descripcion: string;
     cantidad: string;
     precio: string;
+    id: string;
 }) {
     const axiosInstance = axios.create({
         withCredentials: true,
     });
-    const eliminarProducto = () => {
-        axiosInstance.post("");
+
+    const [idProducto, setIdProducto] = useState("");
+
+    const eliminarProducto = async () => {
+        try {
+            const responseAxios = await axiosInstance.delete(`https://proyecto1-api.onrender.com/api/carrito${idProducto}`);
+        } catch (error) {
+            console.log('no se pudo eliminar el producto')            
+        }
     };
 
     return (
@@ -25,13 +34,21 @@ export default function TarjetaCarrito(prop: {
                 <p className="mb-3 font-normal text-gray-700 ">
                     {prop.descripcion}
                 </p>
-                <p className="mb-3 font-normal text-gray-700 ">Q {prop.precio}</p>
+                <p className="mb-3 font-normal text-gray-700 ">
+                    Q {prop.precio}
+                </p>
                 <p className="mb-3 font-normal text-gray-700 ">
                     Cantidad: {prop.cantidad}
                 </p>
             </div>
             <div className="flex justify-end items-stretch">
-                <button className="relative  px-4 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 bg-opacity-50">
+                <button
+                    className="relative  px-4 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 bg-opacity-50"
+                    onClick={() => {
+                        setIdProducto(prop.id);
+                        eliminarProducto();
+                    }}
+                >
                     Eliminar
                 </button>
             </div>
