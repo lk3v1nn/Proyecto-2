@@ -6,13 +6,12 @@ import axios, {AxiosError} from "axios";
 import { useRouter } from "next/navigation";
 
 
-const axiosInstance = axios.create({
-    withCredentials: true,
-  });
 
 export default function Login() {
     const [datos, setDatos] = useState({ CorreoElectronico: "", Clave: "" });
     const router = useRouter();
+
+
 
     useEffect(() => {
         console.log("carga la pagina");
@@ -21,9 +20,13 @@ export default function Login() {
     const manejadorSumit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       
+      const axiosInstance = axios.create({
+        withCredentials: true,
+      });
+
     //   console.log(datos)
       try {
-        const respuestaAxios = await axiosInstance.post('http://proyecto1-api.onrender.com/api/login/', datos);
+        const respuestaAxios = await axiosInstance.post('https://proyecto1-api.onrender.com/api/login/', datos);
         // router.push('../catalogo')
         console.log(respuestaAxios)
         console.log('si pusho el boton')
