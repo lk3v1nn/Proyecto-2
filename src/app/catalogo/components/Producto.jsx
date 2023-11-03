@@ -52,7 +52,7 @@ export default function Producto(props) {
         axiosInstance
             .get("https://proyecto1-api.onrender.com/api/carrito")
             .then((res) => {
-                console.log("res num: ", res.data.length);
+                console.log("res num: ", numProducts);
                 setNumProductsContext(res.data.length);
             })
             .catch((err) => {
