@@ -29,7 +29,7 @@ export default function Login() {
             .then((respuesta) => {
                 const cookieValue = respuesta.headers["Set-Cookie"]; // Obtén el valor de la cookie
                 document.cookie = cookieValue;
-                // router.push('../catalogo')
+                router.push('../catalogo')
             })
             .catch((error) => {
                 if (error instanceof AxiosError) {
