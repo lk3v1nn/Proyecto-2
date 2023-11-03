@@ -54,7 +54,7 @@ export default function Producto(props) {
             .get("https://proyecto1-api.onrender.com/api/carrito")
             .then((res) => {
                 console.log("res num: ", numProducts);
-                setNumProducts(stringify(res.data.length));
+                setNumProducts(res.data.length+"");
             })
             .catch((err) => {
                 console.log("error al acualizar el numero");
