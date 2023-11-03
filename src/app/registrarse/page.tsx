@@ -6,6 +6,10 @@ import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import {Alert} from './components/Alert'
 
+const axiosInstance = axios.create({
+    withCredentials: true,
+});
+
 export default function Registrarse() {
     const [datos, setDatos] = useState({ nombre: "" });
     const [error, setError] = useState();
@@ -37,7 +41,7 @@ export default function Registrarse() {
             CorreoElectronico
         };
         try {
-            const respuesta = await axios.post(
+            const respuesta = await axiosInstance.post(
                 "https://proyecto1-api.onrender.com/api/registro",
                 dataUser
             );
