@@ -16,7 +16,8 @@ export default function TarjetaCarrito(prop: {
 
     const eliminarProducto = async () => {
         try {
-            const responseAxios = await axiosInstance.delete(`https://proyecto1-api.onrender.com/api/carrito${idProducto}`);
+            const responseAxios = await axiosInstance.delete(`https://proyecto1-api.onrender.com/api/carrito/${idProducto}`);
+            console.log(responseAxios)
         } catch (error) {
             console.log('no se pudo eliminar el producto')            
         }
