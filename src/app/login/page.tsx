@@ -26,13 +26,10 @@ export default function Login() {
         // Manejar la solicitud de inicio de sesión en el cliente
         axiosInstance
             .post("https://proyecto1-api.onrender.com/api/login/", datos)
-            .then((respuestaAxios) => {
-                // router.push('../catalogo')
-                const cookieValue = respuestaAxios.headers["Set-Cookie"]; // Obtén el valor de la cookie
-                console.log(respuestaAxios.headers);
+            .then((respuesta) => {
+                const cookieValue = respuesta.headers["Set-Cookie"]; // Obtén el valor de la cookie
                 document.cookie = cookieValue;
-                console.log(respuestaAxios);
-                console.log("si pusho el boton");
+                // router.push('../catalogo')
             })
             .catch((error) => {
                 if (error instanceof AxiosError) {
