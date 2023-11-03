@@ -2,41 +2,40 @@
 
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import axios, {AxiosError} from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-
-
 
 export default function Login() {
     const [datos, setDatos] = useState({ CorreoElectronico: "", Clave: "" });
     const router = useRouter();
-
-
 
     useEffect(() => {
         console.log("carga la pagina");
     }, []);
 
     const manejadorSumit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      
-      const axiosInstance = axios.create({
-        withCredentials: true,
-      });
+        e.preventDefault();
 
-    //   console.log(datos)
-      try {
-        const respuestaAxios = await axiosInstance.post('https://proyecto1-api.onrender.com/api/login/', datos);
-        // router.push('../catalogo')
-        console.log(respuestaAxios)
-        console.log('si pusho el boton')
-      } catch (error) {
-        if(error instanceof AxiosError){
-            console.log(error.response?.data)
-            console.log('error en el login p2')
-        }
-      }
-    }
+        const axiosInstance = axios.create({
+            withCredentials: true,
+        });
+
+        //   console.log(datos)
+        axios
+            .post("https://proyecto1-api.onrender.com/api/login/", {
+                withCredentials: true,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((response) => {
+                // router.push('../catalogo')
+                console.log(response);
+            })
+            .catch((error) => {
+                // Manejar errores
+            });
+    };
 
     return (
         <>
