@@ -4,9 +4,12 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import {Alert} from './components/Alert'
 
 export default function Login() {
     const [datos, setDatos] = useState({ CorreoElectronico: "", Clave: "" });
+    const [error, setError] = useState();
+
     const router = useRouter();
 
     useEffect(() => {
@@ -34,13 +37,14 @@ export default function Login() {
             .catch((error) => {
                 if (error instanceof AxiosError) {
                     console.log(error.response?.data);
-                    console.log("error en el login p2");
+                    setError(error.response?.data)
                 }
             });
     };
 
     return (
         <>
+            {error && <Alert mensaje = {error}/>}
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
