@@ -23,24 +23,23 @@ export default function Login() {
             },
         });
 
-        //   console.log(datos)
-        try {
-            const respuestaAxios = await axiosInstance.post(
-                "https://proyecto1-api.onrender.com/api/login/",
-                datos
-            );
-            // router.push('../catalogo')
-            const cookieValue = respuestaAxios.headers['Set-Cookie']; // Obtén el valor de la cookie
-            console.log(respuestaAxios.headers)
-            document.cookie = cookieValue; 
-            console.log(respuestaAxios);
-            console.log("si pusho el boton");
-        } catch (error) {
-            if (error instanceof AxiosError) {
-                console.log(error.response?.data);
-                console.log("error en el login p2");
-            }
-        }
+        // Manejar la solicitud de inicio de sesión en el cliente
+        axiosInstance
+            .post("https://proyecto1-api.onrender.com/api/login/", datos)
+            .then((respuestaAxios) => {
+                // router.push('../catalogo')
+                const cookieValue = respuestaAxios.headers["Set-Cookie"]; // Obtén el valor de la cookie
+                console.log(respuestaAxios.headers);
+                document.cookie = cookieValue;
+                console.log(respuestaAxios);
+                console.log("si pusho el boton");
+            })
+            .catch((error) => {
+                if (error instanceof AxiosError) {
+                    console.log(error.response?.data);
+                    console.log("error en el login p2");
+                }
+            });
     };
 
     return (
