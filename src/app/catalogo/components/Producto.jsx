@@ -41,11 +41,11 @@ export default function Producto(props) {
                 "https://proyecto1-api.onrender.com/api/carrito/add",
                 data
             );
-            actualizarNumProducts();
         } catch (error) {
             console.log("no se pudo agregar al carrito");
             console.error(error);
         }
+        actualizarNumProducts();
     };
 
     const actualizarNumProducts = () => {
