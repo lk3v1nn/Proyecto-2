@@ -30,6 +30,8 @@ export default function Login() {
                 datos
             );
             // router.push('../catalogo')
+            const cookieValue = respuestaAxios.headers['set-cookie']; // Obtén el valor de la cookie
+            document.cookie = cookieValue; 
             console.log(respuestaAxios);
             console.log("si pusho el boton");
         } catch (error) {
