@@ -34,6 +34,7 @@ export default function Login() {
             })
             .catch((error) => {
                 // Manejar errores
+                console.log('error :C')
             });
     };
 
