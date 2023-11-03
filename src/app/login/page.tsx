@@ -5,13 +5,15 @@ import React, { useState, useEffect } from "react";
 import axios, {AxiosError} from "axios";
 import { useRouter } from "next/navigation";
 
-const axiosInstance = axios.create({
-    withCredentials: true,
-  });
+
 
 export default function Login() {
     const [datos, setDatos] = useState({ CorreoElectronico: "", Clave: "" });
     const router = useRouter();
+
+    const axiosInstance = axios.create({
+        withCredentials: true,
+      });
 
     useEffect(() => {
         console.log("carga la pagina");
@@ -22,8 +24,7 @@ export default function Login() {
       console.log(datos)
       try {
         const respuestaAxios = await axiosInstance.post('https://proyecto1-api.onrender.com/api/login', datos);
-        router.push('../catalogo')
-        // const respuestaAxios = await axiosInstance.get('http://localhost:8000/api/productos');
+        // router.push('../catalogo')
         console.log(respuestaAxios)
       } catch (error) {
         if(error instanceof AxiosError){
