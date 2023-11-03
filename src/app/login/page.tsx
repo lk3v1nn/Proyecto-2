@@ -33,6 +33,7 @@ export default function Login() {
       } catch (error) {
         if(error instanceof AxiosError){
             console.log(error.response?.data)
+            console.log('error en el login p2')
         }
       }
     }
