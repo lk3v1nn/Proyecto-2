@@ -39,7 +39,6 @@ export default function Catalogo() {
         axiosInstance
             .get("https://proyecto1-api.onrender.com/api/carrito")
             .then((res) => {
-                console.log("res num: ", res.data.length);
                 setNumProducts(res.data.length);
             })
             .catch((err) => {
@@ -52,7 +51,6 @@ export default function Catalogo() {
         <>
         <NumProductsContext.Provider value={[numProducts, setNumProducts]}>
             <BotonCarrito />
-        </NumProductsContext.Provider>
         
             <div className="container">
                 <div className="containerProducts">
@@ -71,6 +69,8 @@ export default function Catalogo() {
                         ))}
                 </div>
             </div>
+        </NumProductsContext.Provider>
+
         </>
     );
 }

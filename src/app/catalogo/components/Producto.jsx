@@ -2,7 +2,6 @@ import "../styles/Producto.css";
 import React, { useContext, useEffect } from 'react';
 import axios from "axios";
 import {NumProductsContext} from '../page'
-import { stringify } from "querystring";
 
 const axiosInstance = axios.create({
     withCredentials: true,

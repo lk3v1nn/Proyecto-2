@@ -9,6 +9,7 @@ export default function BotonCarrito() {
     const redireccionar = () => {
         router.push("../carrito");
     };
+    
     const [numProducts, setNumProductsContext] = useContext(NumProductsContext);
 
     return (
