@@ -12,12 +12,9 @@ export default function TarjetaCarrito(prop: {
         withCredentials: true,
     });
 
-    const [idProducto, setIdProducto] = useState("");
-
-    const eliminarProducto = async () => {
-        console.log(`https://proyecto1-api.onrender.com/api/carrito/${idProducto}`)
+    const eliminarProducto = async (id) => {
         try {
-            const responseAxios = await axiosInstance.delete(`https://proyecto1-api.onrender.com/api/carrito/${idProducto}`);
+            const responseAxios = await axiosInstance.delete(`https://proyecto1-api.onrender.com/api/carrito/${id}`);
             window.location.reload();
         } catch (error) {
             console.log('no se pudo eliminar el producto')            
@@ -47,9 +44,7 @@ export default function TarjetaCarrito(prop: {
                 <button
                     className="relative  px-4 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 bg-opacity-50"
                     onClick={() => {
-                        setIdProducto(prop.id);
-                        console.log('id:', prop.id)
-                        eliminarProducto();
+                        eliminarProducto(prop.id);
                     }}
                 >
                     Eliminar
