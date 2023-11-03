@@ -31,7 +31,7 @@ export default function Login() {
             );
             // router.push('../catalogo')
             const cookieValue = respuestaAxios.headers['Set-Cookie']; // Obtén el valor de la cookie
-            console.log('cookie:',cookieValue)
+            console.log(respuestaAxios.headers)
             document.cookie = cookieValue; 
             console.log(respuestaAxios);
             console.log("si pusho el boton");
