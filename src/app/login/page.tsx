@@ -26,7 +26,7 @@ export default function Login() {
         //   console.log(datos)
         try {
             const respuestaAxios = await axiosInstance.post(
-                "https://proyecto1-api.onrender.com/api/login/11",
+                "https://proyecto1-api.onrender.com/api/login/",
                 datos
             );
             // router.push('../catalogo')
